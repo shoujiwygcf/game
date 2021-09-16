@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<title>旋转消除</title>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<link rel="icon" href="icon.png">
+		<link rel="stylesheet" type="text/css" href="style/style.css">
+		<link rel="stylesheet" href="style/font/css/font-awesome.min.css">
+		<script type='text/javascript' src="js/jquery.min.js"></script>
+		<script type='text/javascript' src="js/game.js"></script>
+		<style>
+a.doudouLink {
+	width: 25%;
+	height: 25%;
+	position: absolute;
+	bottom: 0;
+	left: 40%;
+	z-index: 999999;
+}
+
+.endBtn {
+	background: url(endbtn.png) no-repeat;
+	background-size: auto 100%;
+	width: 28rem;
+	height: 16rem;
+	position: relative;
+	margin: 0 auto;
+}
+
+a.moreGame {
+	width: 40%;
+	padding-top: 30%;
+	position: absolute;
+	bottom: 16%;
+	right: 0;
+}
+
+a.irestartBtn {
+	width: 40%;
+	padding-top: 30%;
+	position: absolute;
+	bottom: 16%;
+	left: 0;
+}
+
+#overlayMask {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 3;
+	background: #fff;
+	opacity: 0.6;
+}
+</style>
+		<style>
+html {
+	-ms-touch-action: none;
+	/* Direct all pointer events to JavaScript code. */
+}
+</style>
+	</head>
+	<body>
+	<div id="moregame2" style="position:fixed;z-index:99; bottom:20px; left:0px; font-size:20px; width:100%; text-align:center;">
+	</div>
+		<input id="bt-game-id" type="hidden" value="6-xzxc">
+		<canvas id="canvas"></canvas>
+		<div id='devtools'
+			style='z-index: 3; display: none; position: absolute; left: 50%; width: 400px; height: 400px; top: 50%; margin-top: -200px; margin-left: -200px;'>
+			<h2 id='clickToExit' style='background-color: #fff; color: #000'>
+				Click to exit
+			</h2>
+			<textarea id='devtoolsText' style='height: 300px; width: 400px;'></textarea>
+		</div>
+		<div id="overlay" class="faded"></div>
+		<div id='startBtn'
+			style='position: absolute; left: 40%; top: 38%; height: 25%; width: 25%; z-index: 99999999; cursor: pointer;'></div>
+		<div id="helpScreen" class='unselectable'>
+			<h1 class='instructions_body'>	</h1>
+			<p class='instructions_body' id='inst_main_body'>	</p>
+		</div>
+		<div id="overlayMask" style="display:none;"></div>
+		<script language=javascript>		
+		function goHome(){
+			window.location=mebtnopenurl;
+		}
+		function clickMore(){
+			if((window.location+"").indexOf("f=zf",1)>0){
+				window.location = mebtnopenurl;
+			 }
+			 else{
+				goHome();
+			 }
+		}
+		function dp_share(){
+			document.getElementById("share").style.display="";
+			
+		}
+		function dp_Ranking(){
+			window.location=mebtnopenurl;
+		}
+
+		function showAd(){
+		}
+		function hideAd(){
+		}
+		document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+		    
+		    WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+		        WeixinJSBridge.invoke('sendAppMessage', {
+		            "img_url": window.shareData.imgUrl,
+		            "link": window.shareData.timeLineLink,
+		            "desc": window.shareData.tContent,
+		            "title": window.shareData.tTitle
+		        }, onShareComplete);
+		    });
+
+		    WeixinJSBridge.on('menu:share:timeline', function(argv) {
+		        WeixinJSBridge.invoke('shareTimeline', {
+		            "img_url": window.shareData.imgUrl,
+		            "img_width": "640",
+		            "img_height": "640",
+		            "link": window.shareData.timeLineLink,
+		            "desc": window.shareData.tContent,
+		            "title": window.shareData.tTitle
+		        }, onShareComplete);
+		    });
+		}, false);
+		</script>
+		<div id=share style="display: none">
+				style="position: fixed; z-index: 9999; top: 0; left: 0; display: "
+				ontouchstart="document.getElementById('share').style.display='none';" />
+		</div>
+	</body>
+</html>
